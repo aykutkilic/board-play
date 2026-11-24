@@ -226,7 +226,7 @@ body.asking #actions { bottom: calc(86px + var(--safe-b)); }
 .ll.bad { border-left-color: #ff6f61; color: #ffcfc8; }
 .ll.warn { border-left-color: #f0b33c; color: #ffe3ac; }
 .ll.gold { border-left-color: #ffd34d; color: #ffe9a3; background: linear-gradient(90deg, rgba(255,211,77,.16), transparent); }
-.ll.card { border-left-color: #8fa8ff; color: #d5ddff; }
+.ll.note { border-left-color: #8fa8ff; color: #d5ddff; }
 .ll.calm { border-left-color: #5fc7d8; color: #c9edf3; }
 .ll.dim { color: #a9a69e; }
 .ll.white { border-left-color: #f3ead2; } .ll.white .le { color: #f7efda; }
