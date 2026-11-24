@@ -85,6 +85,7 @@
   </details>
 
   <!-- what there is to do -->
+  <div id="throw" hidden aria-label="The throw"></div>
   <div id="actions"></div>
   <button id="clockBtn" hidden title="Press the clock (Space)"><canvas id="dial" width="180" height="180"></canvas><b id="clockWord">Press</b></button>
   <div id="promo" hidden></div>
@@ -199,7 +200,7 @@
       <div class="help small">
         <p><b>Men:</b> drag a man – your hand takes it up, follows and puts it down –, or tap it and then where it goes. Let go elsewhere and it goes back.</p>
         <p><b>The clock:</b> your move counts when you have <b>pressed your clock</b>: tap the clock on the table, the dial at the bottom, or <b>Space</b>. Until then your time runs. Black starts the clock before the first move. A flag that falls ends the game. Mate and stalemate end it at once.</p>
-        <p><b>Dice:</b> tap <b>Roll</b> (or the dice, or Space); or hold it to shake the dice, and flick up to throw: where and how fast you flick is how they fly. When your play is done, pick the dice up (<b>Done</b>, Space, or tap them). ↶ takes a man back before that.</p>
+        <p><b>Dice:</b> tap <b>Roll</b> (or the dice, or Space); or hold it to shake the dice, and flick up to throw: where and how fast you flick is how they fly. There is one pair: a second after your throw the other player takes the dice; what you threw stays on the screen while you play. <b>Done</b> (Space) ends your turn. ↶ takes a man back before that.</p>
         <p><b>Doubling cube:</b> before your throw, <b>Double</b> – the other side takes or drops.</p>
         <p><b>Look round:</b> drag beside the board (or the right mouse button, two fingers), wheel or pinch zooms, double-click beside the board straightens the view.</p>
         <p><b>Keys:</b> F2 / C camera, Space clock · roll · done, U take back, L the log, Esc the menu.</p>
@@ -282,7 +283,7 @@
         <label>Height <b id="edHval"></b><input type="range" id="edH" min="160" max="200"></label>
         <label>Build <b id="edBval"></b><input type="range" id="edB" min="0" max="100"></label>
         <label>Plays <select id="edHand"><option value="0">Right-handed</option><option value="1">Left-handed</option></select></label>
-        <label>Shirt <input type="color" id="edShirt"> Waistcoat <input type="color" id="edVest"> Trousers <input type="color" id="edPants"></label>
+        <label>Shirt <input type="color" id="edShirt"> Jacket <input type="color" id="edVest"> Trousers <input type="color" id="edPants"></label>
         <div class="row end"><button id="edRandom" class="ghost">Random</button><button id="edCancel" class="ghost">Cancel</button><button id="edSave" class="primary">Save</button></div>
       </div>
     </div>
