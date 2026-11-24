@@ -3,7 +3,7 @@
 // latest release; the cache is only a fallback). Each release gets a fresh
 // cache; only this game's old caches are dropped (other games share the
 // origin – aykutkilic.github.io – and keep theirs).
-const VERSION = '8cc5550.11241048';
+const VERSION = '87515ed.11241107';
 const CACHE = `boardgames-${VERSION}`;
 const SHELL = ['./', './index.html', './manifest.webmanifest', './src/style.css', './src/main.js', './icons/icon-192.png', './icons/icon-512.png'];
 
