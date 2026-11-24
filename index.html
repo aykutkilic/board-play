@@ -77,6 +77,9 @@
   <div id="toast" hidden></div>
   <div id="hint"></div>
 
+  <!-- the narrator -->
+  <div id="caption" aria-live="polite" title="The narrator – tap to dismiss"><span class="mic">🎙</span><p id="captionText"></p></div>
+
   <!-- the event log and the score sheet -->
   <details id="logBox">
     <summary title="Game log"><span id="logHead">Game log</span></summary>
@@ -225,6 +228,14 @@
     <section class="tab" data-tab="sound" hidden>
       <div class="row lbl"><span>Volume</span><input id="vol" type="range" min="0" max="1" step="0.05" value="0.8"></div>
       <div class="row lbl"><span>Mute</span><input type="checkbox" id="muteChk"></div>
+      <h4>Narrator · Anlatıcı</h4>
+      <div class="row lbl"><span>Commentary</span><select id="narMode"><option value="off">Off</option><option value="text">Written</option><option value="voice">Written and spoken</option></select></div>
+      <div class="row lbl"><span>How much</span><select id="narTalk"><option value="little">The important things</option><option value="some">As it goes</option><option value="much">Talkative</option></select></div>
+      <div class="row lbl"><span>Language</span><select id="narLang"><option value="en">English</option><option value="tr">Türkçe</option></select></div>
+      <div class="row lbl" id="narVoiceRow"><span>Voice</span><select id="narVoice"></select></div>
+      <div id="narBar" hidden><i></i></div>
+      <p id="narState" class="muted small"></p>
+      <div class="row"><button id="narTest" class="ghost" hidden>Test</button><button id="narAgain" class="primary" hidden>Try again</button></div>
       <div class="row lbl"><span>The clock’s ticking</span><input type="checkbox" id="tickChk" checked></div>
     </section>
   </aside>

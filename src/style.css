@@ -262,6 +262,15 @@ body.asking #throw { bottom: calc(136px + var(--safe-b)); }
 #sheet td:first-child { color: var(--muted); width: 30px; }
 #sheet td.now { color: var(--accent); font-weight: 700; }
 
+/* the narrator */
+#caption { position: fixed; left: calc(12px + var(--safe-l)); top: calc(20px + var(--bar, 46px) + var(--safe-t)); z-index: 6; width: min(340px, calc(100vw - 24px)); display: flex; gap: 8px; padding: 9px 13px 10px 10px; border-radius: 14px; background: rgba(12, 11, 10, .74); border: 1px solid rgba(232, 194, 106, .28); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .5s, transform .5s; cursor: pointer; }
+#caption.show { opacity: 1; transform: none; pointer-events: auto; }
+#caption p { margin: 0; font: italic 400 15px/1.42 Georgia, "Times New Roman", serif; color: #f4ead2; }
+#caption .mic { font-size: 14px; opacity: .8; }
+@media (max-width: 900px) { #caption { top: auto; bottom: calc(72px + var(--safe-b)); } #caption p { font-size: 13.5px; } body:has(#throw:not([hidden])) #caption { bottom: calc(270px + var(--safe-b)); } }
+@media (max-width: 560px) { body:has(#clockBtn:not([hidden])) #caption { width: calc(100vw - 132px); bottom: calc(76px + var(--safe-b)); } }
+@media (max-height: 460px) { #caption { width: min(300px, 42vw); } #caption p { font-size: 13px; } }
+
 /* the main event */
 #news { position: fixed; left: 50%; top: calc(16px + var(--bar, 46px) + var(--safe-t)); transform: translate(-50%, -10px); z-index: 6; opacity: 0; pointer-events: none; transition: opacity .6s, transform .6s; width: max-content; }
 #news.show { opacity: 1; transform: translate(-50%, 0); transition-duration: .18s; }
