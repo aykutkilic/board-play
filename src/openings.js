@@ -1,13 +1,13 @@
 const d=`A00|Polish Opening|b4
 A00|Grob Opening|g4
 A00|Benko's Opening|g3
-A01|Nimzo\u2013Larsen Attack|b3
+A01|Nimzo–Larsen Attack|b3
 A02|Bird's Opening|f4
 A03|Bird's Opening: Dutch|f4 d5
-A04|R\xE9ti Opening|Nf3
-A06|R\xE9ti Opening|Nf3 d5
+A04|Réti Opening|Nf3
+A06|Réti Opening|Nf3 d5
 A07|King's Indian Attack|Nf3 d5 g3
-A09|R\xE9ti Gambit|Nf3 d5 c4
+A09|Réti Gambit|Nf3 d5 c4
 A10|English Opening|c4
 A15|English: Anglo-Indian|c4 Nf6
 A20|English: Reversed Sicilian|c4 e5
@@ -30,12 +30,12 @@ B01|Scandinavian: Main Line|e4 d5 exd5 Qxd5
 B02|Alekhine's Defence|e4 Nf6
 B06|Modern Defence|e4 g6
 B07|Pirc Defence|e4 d6 d4 Nf6
-B10|Caro\u2013Kann Defence|e4 c6
-B12|Caro\u2013Kann: Advance|e4 c6 d4 d5 e5
-B13|Caro\u2013Kann: Exchange|e4 c6 d4 d5 exd5
-B15|Caro\u2013Kann: Main Line|e4 c6 d4 d5 Nc3
+B10|Caro–Kann Defence|e4 c6
+B12|Caro–Kann: Advance|e4 c6 d4 d5 e5
+B13|Caro–Kann: Exchange|e4 c6 d4 d5 exd5
+B15|Caro–Kann: Main Line|e4 c6 d4 d5 Nc3
 B20|Sicilian Defence|e4 c5
-B21|Sicilian: Smith\u2013Morra Gambit|e4 c5 d4 cxd4 c3
+B21|Sicilian: Smith–Morra Gambit|e4 c5 d4 cxd4 c3
 B22|Sicilian: Alapin|e4 c5 c3
 B23|Sicilian: Closed|e4 c5 Nc3
 B27|Sicilian: Hyperaccelerated Dragon|e4 c5 Nf3 g6
@@ -98,7 +98,7 @@ D30|Queen's Gambit Declined|d4 d5 c4 e6
 D32|Tarrasch Defence|d4 d5 c4 e6 Nc3 c5
 D35|QGD: Exchange|d4 d5 c4 e6 Nc3 Nf6 cxd5
 D43|Semi-Slav Defence|d4 d5 c4 c6 Nf3 Nf6 Nc3 e6
-D80|Gr\xFCnfeld Defence|d4 Nf6 c4 g6 Nc3 d5
+D80|Grünfeld Defence|d4 Nf6 c4 g6 Nc3 d5
 E00|Catalan Opening|d4 Nf6 c4 e6 g3
 E10|Blumenfeld Gambit|d4 Nf6 c4 e6 Nf3 c5 d5 b5
 E11|Bogo-Indian Defence|d4 Nf6 c4 e6 Nf3 Bb4+
@@ -106,5 +106,5 @@ E12|Queen's Indian Defence|d4 Nf6 c4 e6 Nf3 b6
 E20|Nimzo-Indian Defence|d4 Nf6 c4 e6 Nc3 Bb4
 E60|King's Indian Defence|d4 Nf6 c4 g6
 E70|King's Indian: Classical|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6
-E80|King's Indian: S\xE4misch|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3`,N=d.split(`
+E80|King's Indian: Sämisch|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3`,N=d.split(`
 `).map(e=>{const[c,n,i]=e.split("|");return{eco:c,name:n,moves:i.split(" ")}}),a=new Map(N.map(e=>[e.moves.join(" "),e]));function f(e){for(let c=Math.min(e.length,24);c>0;c--){const n=a.get(e.slice(0,c).join(" "));if(n)return n}return null}export{N as OPENINGS,f as openingOf};
