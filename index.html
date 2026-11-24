@@ -78,12 +78,12 @@
   <div id="hint" data-raw></div>
 
   <!-- the narrator -->
-  <div id="caption" aria-live="polite" title="The narrator – tap to dismiss"><span class="mic">🎙</span><p id="captionText" data-raw></p></div>
+  <div id="caption" aria-live="polite" title="The narrator – tap to dismiss"><span class="mic">🎙</span><div><p id="captionText" data-raw></p><div id="captionLinks" data-raw class="chips"></div></div></div>
 
   <!-- the event log and the score sheet -->
   <details id="logBox">
     <summary title="Game log"><span id="logHead" data-raw>Game log</span></summary>
-    <div id="logTabs"><button data-l="log" class="on">Events</button><button data-l="sheet">Score sheet</button><span class="grow"></span><button id="copyRec" data-raw title="Copy the game">Copy PGN</button></div>
+    <div id="logTabs"><button data-l="log" class="on">Events</button><button data-l="sheet">Score sheet</button><span class="grow"></span><button id="reviewBtn">🔎 Analysis</button><button id="copyRec" data-raw title="Copy the game">Copy PGN</button></div>
     <div id="logScroll"><div id="log" data-raw></div><div id="sheet" data-raw hidden></div></div>
   </details>
 
@@ -113,7 +113,7 @@
 
     <section class="tab" data-tab="game" hidden>
       <div class="games" id="gameList" data-raw></div>
-      <div class="row lbl" data-for="chess checkers backgammon bridge"><span>Play against</span>
+      <div class="row lbl" data-for="chess checkers go backgammon bridge"><span>Play against</span>
         <select id="oppSel">
           <option value="ai:easy">Computer – Easy</option>
           <option value="ai:normal" selected>Computer – Normal</option>
@@ -122,8 +122,10 @@
         </select>
       </div>
       <div class="row lbl" data-for="checkers"><span>Rules</span><select id="variantSel" data-raw></select></div>
-      <div class="row lbl" data-for="chess checkers"><span>You play</span><select id="colorSel"><option value="white">White / light</option><option value="black">Black / dark</option><option value="random">By lot</option><option value="swap" selected>In turn</option></select></div>
-      <div class="row lbl" data-for="chess checkers"><span>Clock</span><select id="timeSel" data-raw></select></div>
+      <div class="row lbl" data-for="go"><span>Board</span><select id="sizeSel" data-raw><option value="9">9×9</option><option value="13">13×13</option><option value="19">19×19</option></select></div>
+      <div class="row lbl" data-for="go"><span>Handicap</span><select id="handiSel" data-raw></select></div>
+      <div class="row lbl" data-for="chess checkers go"><span>You play</span><select id="colorSel"><option value="white">White / light</option><option value="black">Black / dark</option><option value="random">By lot</option><option value="swap" selected>In turn</option></select></div>
+      <div class="row lbl" data-for="chess checkers go"><span>Clock</span><select id="timeSel" data-raw></select></div>
       <div class="row lbl" data-for="chess"><span>Touch-move (FIDE 4.3)</span><input type="checkbox" id="touchChk"></div>
       <div class="row lbl" data-for="klondike"><span>Cards turned</span><select id="drawSel"><option value="1">One</option><option value="3">Three</option></select></div>
       <div class="row lbl" data-for="freecell"><span>Deal number</span><input id="dealIn" type="number" min="1" max="1000000" placeholder="any"></div>
@@ -210,6 +212,7 @@
         <p data-h><b>The clock:</b> your move counts when you have <b>pressed your clock</b>: tap the clock on the table, the dial at the bottom, or <b>Space</b>. Until then your time runs. Black starts the clock before the first move. A flag that falls ends the game. Mate and stalemate end it at once.</p>
         <p data-h><b>Dice:</b> tap <b>Roll</b> (or the dice, or Space); or hold it to shake the dice, and flick up to throw: where and how fast you flick is how they fly. There is one pair: a second after your throw the other player takes the dice; what you threw stays on the screen while you play. <b>Done</b> (Space) ends your turn. ↶ takes a man back before that.</p>
         <p data-h><b>Doubling cube:</b> before your throw, <b>Double</b> – the other side takes or drops.</p>
+        <p data-h><b>Go:</b> click a point to play there. With a finger: tap shows the stone, a second tap plays it – or slide, the stone goes a little above your finger, and let go. <b>Pass</b> when there is nothing more to gain; after two passes tap the dead stones and <b>agree</b>.</p>
         <p data-h><b>Cards:</b> drag a card (or a run of them), or tap it and it goes where it fits: home, on to another, to a cell. In Klondike tap the stock (or Space) to turn. In bridge tap a card of yours to play it – and dummy’s, when you declare; the calls are on the pad.</p>
         <p data-h><b>Look round:</b> drag beside the board (or the right mouse button, two fingers), wheel or pinch zooms, double-click beside the board straightens the view.</p>
         <p data-h><b>Keys:</b> F2 / C camera, Space clock · roll · done, U take back, L the log, Esc the menu.</p>
@@ -222,6 +225,7 @@
       <div class="row lbl"><span>Chess notation</span><select id="styleSel" data-raw></select></div>
       <div class="row lbl"><span>Main events on screen</span><input type="checkbox" id="newsChk" checked></div>
       <div class="row lbl"><span>Graphics</span><select id="qualSel"><option value="auto">Auto</option><option value="high">High</option><option value="low">Light</option></select></div>
+      <div class="row"><button id="pediaBtn" class="ghost">📖 Boardopedia</button></div>
       <div class="row"><button id="fsBtn2" class="ghost">⛶ Fullscreen</button><button id="installBtn" class="ghost">📲 Install app</button></div>
       <p class="muted small" id="verTag" data-raw></p>
     </section>
@@ -310,7 +314,36 @@
     <div class="card center">
       <h2 id="overTitle" data-raw></h2>
       <p id="overText" data-raw class="muted"></p>
-      <div class="row center"><button id="againBtn" class="primary">Play again</button><button id="overCopy" class="ghost">Copy the game</button><button id="overMenu" class="ghost">Menu</button></div>
+      <div class="row center"><button id="againBtn" class="primary">Play again</button><button id="overReview" class="ghost">🔎 Analysis</button><button id="overCopy" data-raw class="ghost">Copy the game</button><button id="overMenu" class="ghost">Menu</button></div>
+    </div>
+  </div>
+
+  <!-- the analysis of a game -->
+  <div id="review" class="modal" hidden>
+    <div class="card reviewCard">
+      <header class="roomsHead"><h3>Game analysis</h3><span id="rvTitle" data-raw class="muted small"></span><button id="rvClose" class="ghost icon" title="Close (Esc)" aria-label="Close">✕</button></header>
+      <div id="rvBar" hidden><i></i></div>
+      <p id="rvNote" data-raw class="muted small"></p>
+      <div class="rvBody">
+        <div class="rvLeft">
+          <canvas id="rvBoard" width="1024" height="1280"></canvas>
+          <div class="rvNav"><button id="rvFirst" class="ghost">⏮</button><button id="rvPrev" class="ghost">◀</button><span id="rvAt" data-raw></span><button id="rvNext" class="ghost">▶</button><button id="rvLast" class="ghost">⏭</button></div>
+        </div>
+        <div class="rvRight">
+          <div id="rvScore" data-raw></div>
+          <canvas id="rvGraph" width="640" height="130"></canvas>
+          <div id="rvTopics" data-raw></div>
+          <ol id="rvMoves" data-raw></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- the Boardopedia -->
+  <div id="pedia" class="modal" hidden>
+    <div class="card pediaCard">
+      <header class="roomsHead"><h3>📖 Boardopedia</h3><input id="pdFind" type="search" placeholder="Search"><button id="pdClose" class="ghost icon" title="Close (Esc)" aria-label="Close">✕</button></header>
+      <div class="pdBody"><nav id="pdList" data-raw></nav><article id="pdText" data-raw></article></div>
     </div>
   </div>
 

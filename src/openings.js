@@ -106,5 +106,5 @@ E12|Queen's Indian Defence|d4 Nf6 c4 e6 Nf3 b6
 E20|Nimzo-Indian Defence|d4 Nf6 c4 e6 Nc3 Bb4
 E60|King's Indian Defence|d4 Nf6 c4 g6
 E70|King's Indian: Classical|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6
-E80|King's Indian: Sämisch|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3`,N=d.split(`
-`).map(e=>{const[c,n,i]=e.split("|");return{eco:c,name:n,moves:i.split(" ")}}),a=new Map(N.map(e=>[e.moves.join(" "),e]));function f(e){for(let c=Math.min(e.length,24);c>0;c--){const n=a.get(e.slice(0,c).join(" "));if(n)return n}return null}export{N as OPENINGS,f as openingOf};
+E80|King's Indian: Sämisch|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3`,a=d.split(`
+`).map(e=>{const[n,c,i]=e.split("|");return{eco:n,name:c,moves:i.split(" ")}}),N=new Map(a.map(e=>[e.moves.join(" "),e]));function o(e){for(let n=Math.min(e.length,24);n>0;n--){const c=N.get(e.slice(0,n).join(" "));if(c)return c}return null}const f=[[/^B[2-9]/,"sicilian"],[/^C0|^C1/,"french"],[/^B1/,"carokann"],[/^C[6-9]/,"spanish"],[/^C5/,"italian"],[/^C3/,"kingsgambit"],[/^C[24]/,"opengames"],[/^E[6-9]/,"kingsindian"],[/^E[0-5]/,"nimzo"],[/^D0[6-9]|^D[1-6]/,"queensgambit"],[/^D[7-9]/,"grunfeld"],[/^A8|^A9/,"dutch"],[/^A[0-3]/,"flank"]],s=e=>`chess-${(f.find(([n])=>n.test(e||""))||[0,"opening"])[1]}`;export{a as OPENINGS,o as openingOf,s as openingTopic};
