@@ -35,8 +35,8 @@
 <body>
   <div id="loader" role="status">
     <div class="balls" aria-hidden="true"><i>♜</i><i>♛</i><i>♞</i></div>
-    <p id="loadText">Setting up the board…</p>
-    <button id="loadAgain" hidden>Try again</button>
+    <p id="loadText" data-raw>Setting up the board…</p>
+    <button id="loadAgain" data-raw hidden>Try again</button>
   </div>
   <script>
     // (slow, or something missing: said so instead of waiting for ever)
@@ -61,47 +61,48 @@
   <!-- players and buttons -->
   <div id="topBar">
   <div id="hud">
-    <div class="pcard" id="p0"><i class="dot"></i><div><b class="pname">Player 1</b><span class="pinfo"></span></div><span class="pscore"></span></div>
-    <div id="onText"></div>
-    <div class="pcard right" id="p1"><span class="pscore"></span><div><b class="pname">Player 2</b><span class="pinfo"></span></div><i class="dot"></i></div>
+    <div class="pcard" id="p0"><i class="dot"></i><div><b class="pname" data-raw>Player 1</b><span class="pinfo" data-raw></span></div><span class="pscore" data-raw></span></div>
+    <div id="onText" data-raw></div>
+    <div class="pcard right" id="p1"><span class="pscore" data-raw></span><div><b class="pname" data-raw>Player 2</b><span class="pinfo" data-raw></span></div><i class="dot"></i></div>
   </div>
   <div id="topRight">
-    <button id="camBtn" class="chip" title="Camera (F2 or C)"><span class="ico">🎥</span><b id="camName">First person</b></button>
+    <button id="camBtn" class="chip" title="Camera (F2 or C)"><span class="ico">🎥</span><b id="camName" data-raw>First person</b></button>
     <button id="undoBtn" class="chip icon" title="Take the move back (U)">↶</button>
     <button id="fsChip" class="chip icon" title="Fullscreen" aria-label="Fullscreen" hidden>⛶</button>
-    <button id="panelPill" class="chip pill" title="Room, game &amp; settings (Esc)"><i class="pillDot"></i><span id="pillName">Menu</span> <b id="pillCode"></b><span id="pillOnline"></span> <span>▾</span></button>
+    <button id="panelPill" class="chip pill" title="Room, game &amp; settings (Esc)"><i class="pillDot"></i><span id="pillName" data-raw>Menu</span> <b id="pillCode" data-raw></b><span id="pillOnline" data-raw></span> <span>▾</span></button>
   </div>
   </div>
   <!-- the main event -->
-  <div id="news" aria-live="polite"></div>
-  <div id="toast" hidden></div>
-  <div id="hint"></div>
+  <div id="news" data-raw aria-live="polite"></div>
+  <div id="toast" data-raw hidden></div>
+  <div id="hint" data-raw></div>
 
   <!-- the narrator -->
-  <div id="caption" aria-live="polite" title="The narrator – tap to dismiss"><span class="mic">🎙</span><p id="captionText"></p></div>
+  <div id="caption" aria-live="polite" title="The narrator – tap to dismiss"><span class="mic">🎙</span><p id="captionText" data-raw></p></div>
 
   <!-- the event log and the score sheet -->
   <details id="logBox">
-    <summary title="Game log"><span id="logHead">Game log</span></summary>
-    <div id="logTabs"><button data-l="log" class="on">Events</button><button data-l="sheet">Score sheet</button><span class="grow"></span><button id="copyRec" title="Copy the game">Copy PGN</button></div>
-    <div id="logScroll"><div id="log"></div><div id="sheet" hidden></div></div>
+    <summary title="Game log"><span id="logHead" data-raw>Game log</span></summary>
+    <div id="logTabs"><button data-l="log" class="on">Events</button><button data-l="sheet">Score sheet</button><span class="grow"></span><button id="copyRec" data-raw title="Copy the game">Copy PGN</button></div>
+    <div id="logScroll"><div id="log" data-raw></div><div id="sheet" data-raw hidden></div></div>
   </details>
 
   <!-- what there is to do -->
-  <div id="bids" hidden></div>
-  <div id="throw" hidden aria-label="The throw"></div>
-  <div id="actions"></div>
-  <button id="clockBtn" hidden title="Press the clock (Space)"><canvas id="dial" width="180" height="180"></canvas><b id="clockWord">Press</b></button>
+  <div id="bids" data-raw hidden></div>
+  <div id="throw" data-raw hidden aria-label="The throw"></div>
+  <div id="actions" data-raw></div>
+  <button id="clockBtn" hidden title="Press the clock (Space)"><canvas id="dial" width="180" height="180"></canvas><b id="clockWord" data-raw>Press</b></button>
   <div id="promo" hidden></div>
 
   <!-- room / game / settings panel -->
   <aside id="panel" hidden>
     <header>
       <div>
-        <div id="roomName">Board games</div>
-        <div class="muted small"><span id="codeBit" hidden>Code <b id="roomCode">----</b> · </span><span id="roomStatus">On this device</span></div>
+        <div id="roomName" data-raw>Board games</div>
+        <div class="muted small"><span id="codeBit" hidden>Code <b id="roomCode" data-raw>----</b> · </span><span id="roomStatus" data-raw>On this device</span></div>
       </div>
       <div class="hbtns">
+        <select id="langSel" class="small" data-raw aria-label="Language"></select>
         <button id="fsBtn" class="ghost icon" title="Fullscreen" aria-label="Fullscreen">⛶</button>
         <button id="closePanel" class="ghost icon" title="Close (Esc)" aria-label="Close">✕</button>
       </div>
@@ -111,7 +112,7 @@
     </nav>
 
     <section class="tab" data-tab="game" hidden>
-      <div class="games" id="gameList"></div>
+      <div class="games" id="gameList" data-raw></div>
       <div class="row lbl" data-for="chess checkers backgammon bridge"><span>Play against</span>
         <select id="oppSel">
           <option value="ai:easy">Computer – Easy</option>
@@ -120,9 +121,9 @@
           <option value="local">A friend, on this device</option>
         </select>
       </div>
-      <div class="row lbl" data-for="checkers"><span>Rules</span><select id="variantSel"></select></div>
+      <div class="row lbl" data-for="checkers"><span>Rules</span><select id="variantSel" data-raw></select></div>
       <div class="row lbl" data-for="chess checkers"><span>You play</span><select id="colorSel"><option value="white">White / light</option><option value="black">Black / dark</option><option value="random">By lot</option><option value="swap" selected>In turn</option></select></div>
-      <div class="row lbl" data-for="chess checkers"><span>Clock</span><select id="timeSel"></select></div>
+      <div class="row lbl" data-for="chess checkers"><span>Clock</span><select id="timeSel" data-raw></select></div>
       <div class="row lbl" data-for="chess"><span>Touch-move (FIDE 4.3)</span><input type="checkbox" id="touchChk"></div>
       <div class="row lbl" data-for="klondike"><span>Cards turned</span><select id="drawSel"><option value="1">One</option><option value="3">Three</option></select></div>
       <div class="row lbl" data-for="freecell"><span>Deal number</span><input id="dealIn" type="number" min="1" max="1000000" placeholder="any"></div>
@@ -133,7 +134,7 @@
       <p id="hostOnly" class="muted small" hidden>Only the room's host can change the game.</p>
       <div id="seats" hidden>
         <h4>At the table</h4>
-        <ul id="seatList"></ul>
+        <ul id="seatList" data-raw></ul>
         <p class="muted small">Tap a seat to sit down – guests between games; the rest watch.</p>
       </div>
     </section>
@@ -155,14 +156,14 @@
         <input id="roomPassIn" class="small" placeholder="Password" maxlength="20" autocomplete="off" hidden>
         <button id="roomPassSet" class="small" hidden>Set</button>
       </div>
-      <div id="members" hidden><h4>In the room</h4><ul id="memberList"></ul><button id="clearBans" class="ghost small" hidden>Clear bans</button></div>
+      <div id="members" hidden><h4>In the room</h4><ul id="memberList" data-raw></ul><button id="clearBans" data-raw class="ghost small" hidden>Clear bans</button></div>
       <div class="section" id="friends">
         <h4>Play with friends</h4>
         <p class="muted small">Create a room and send the invite link – friends join this table right where it is. Whoever isn’t playing watches.</p>
         <div id="onlineRooms" hidden>
-          <div class="orHead"><b>Online rooms</b><span id="orCount" class="muted small"></span><button id="orRefresh" class="ghost small" title="Refresh">↻</button></div>
-          <ul id="orList"></ul>
-          <div id="orNote" class="muted small"></div>
+          <div class="orHead"><b>Online rooms</b><span id="orCount" data-raw class="muted small"></span><button id="orRefresh" class="ghost small" title="Refresh">↻</button></div>
+          <ul id="orList" data-raw></ul>
+          <div id="orNote" data-raw class="muted small"></div>
           <button id="listBtn" class="ghost small" hidden>All rooms &amp; filters…</button>
         </div>
         <div id="createRow">
@@ -174,27 +175,27 @@
             <input id="newRoomPass" placeholder="Password" maxlength="20" autocomplete="off" hidden>
             <button id="createBtn" class="primary">Create room</button>
           </div>
-          <div id="accessHint" class="muted small"></div>
+          <div id="accessHint" data-raw class="muted small"></div>
         </div>
         <div class="row" id="joinRow">
           <input id="joinCode" placeholder="Room code" maxlength="4" autocapitalize="characters" style="text-transform:uppercase">
           <button id="joinBtn">Join</button>
         </div>
-        <div id="friendsStatus" class="muted small"></div>
+        <div id="friendsStatus" data-raw class="muted small"></div>
       </div>
       <div id="chatRow" hidden>
         <h4>Quick chat</h4>
-        <div class="quick" id="quick"></div>
+        <div class="quick" id="quick" data-raw></div>
       </div>
-      <div class="tabFoot"><button id="leaveBtn" class="danger" hidden>Leave room</button></div>
+      <div class="tabFoot"><button id="leaveBtn" data-raw class="danger" hidden>Leave room</button></div>
     </section>
 
     <section class="tab" data-tab="player" hidden>
       <div class="me">
         <canvas id="mePreview" width="150" height="190"></canvas>
         <div>
-          <div id="meName" class="meName"></div>
-          <div id="meWhere" class="muted small"></div>
+          <div id="meName" data-raw class="meName"></div>
+          <div id="meWhere" data-raw class="muted small"></div>
           <button id="editBtn" class="primary small">Edit player</button>
         </div>
       </div>
@@ -205,58 +206,58 @@
       <div class="row lbl"><span>Promote to a queen at once</span><input type="checkbox" id="autoQueen"></div>
       <div class="row lbl"><span>Hands’ pace</span><select id="paceSel"><option value="0.75">Unhurried</option><option value="1" selected>Normal</option><option value="1.5">Quick</option></select></div>
       <div class="help small">
-        <p><b>Men:</b> drag a man – your hand takes it up, follows and puts it down –, or tap it and then where it goes. Let go elsewhere and it goes back.</p>
-        <p><b>The clock:</b> your move counts when you have <b>pressed your clock</b>: tap the clock on the table, the dial at the bottom, or <b>Space</b>. Until then your time runs. Black starts the clock before the first move. A flag that falls ends the game. Mate and stalemate end it at once.</p>
-        <p><b>Dice:</b> tap <b>Roll</b> (or the dice, or Space); or hold it to shake the dice, and flick up to throw: where and how fast you flick is how they fly. There is one pair: a second after your throw the other player takes the dice; what you threw stays on the screen while you play. <b>Done</b> (Space) ends your turn. ↶ takes a man back before that.</p>
-        <p><b>Doubling cube:</b> before your throw, <b>Double</b> – the other side takes or drops.</p>
-        <p><b>Cards:</b> drag a card (or a run of them), or tap it and it goes where it fits: home, on to another, to a cell. In Klondike tap the stock (or Space) to turn. In bridge tap a card of yours to play it – and dummy’s, when you declare; the calls are on the pad.</p>
-        <p><b>Look round:</b> drag beside the board (or the right mouse button, two fingers), wheel or pinch zooms, double-click beside the board straightens the view.</p>
-        <p><b>Keys:</b> F2 / C camera, Space clock · roll · done, U take back, L the log, Esc the menu.</p>
+        <p data-h><b>Men:</b> drag a man – your hand takes it up, follows and puts it down –, or tap it and then where it goes. Let go elsewhere and it goes back.</p>
+        <p data-h><b>The clock:</b> your move counts when you have <b>pressed your clock</b>: tap the clock on the table, the dial at the bottom, or <b>Space</b>. Until then your time runs. Black starts the clock before the first move. A flag that falls ends the game. Mate and stalemate end it at once.</p>
+        <p data-h><b>Dice:</b> tap <b>Roll</b> (or the dice, or Space); or hold it to shake the dice, and flick up to throw: where and how fast you flick is how they fly. There is one pair: a second after your throw the other player takes the dice; what you threw stays on the screen while you play. <b>Done</b> (Space) ends your turn. ↶ takes a man back before that.</p>
+        <p data-h><b>Doubling cube:</b> before your throw, <b>Double</b> – the other side takes or drops.</p>
+        <p data-h><b>Cards:</b> drag a card (or a run of them), or tap it and it goes where it fits: home, on to another, to a cell. In Klondike tap the stock (or Space) to turn. In bridge tap a card of yours to play it – and dummy’s, when you declare; the calls are on the pad.</p>
+        <p data-h><b>Look round:</b> drag beside the board (or the right mouse button, two fingers), wheel or pinch zooms, double-click beside the board straightens the view.</p>
+        <p data-h><b>Keys:</b> F2 / C camera, Space clock · roll · done, U take back, L the log, Esc the menu.</p>
       </div>
     </section>
 
     <section class="tab" data-tab="view" hidden>
-      <div class="row lbl"><span>Camera</span><select id="camSel"></select></div>
-      <div class="row lbl"><span>Watching (when you don’t play)</span><select id="watchSel"></select></div>
-      <div class="row lbl"><span>Chess notation</span><select id="styleSel"></select></div>
+      <div class="row lbl"><span>Camera</span><select id="camSel" data-raw></select></div>
+      <div class="row lbl"><span>Watching (when you don’t play)</span><select id="watchSel" data-raw></select></div>
+      <div class="row lbl"><span>Chess notation</span><select id="styleSel" data-raw></select></div>
       <div class="row lbl"><span>Main events on screen</span><input type="checkbox" id="newsChk" checked></div>
       <div class="row lbl"><span>Graphics</span><select id="qualSel"><option value="auto">Auto</option><option value="high">High</option><option value="low">Light</option></select></div>
       <div class="row"><button id="fsBtn2" class="ghost">⛶ Fullscreen</button><button id="installBtn" class="ghost">📲 Install app</button></div>
-      <p class="muted small" id="verTag"></p>
+      <p class="muted small" id="verTag" data-raw></p>
     </section>
 
     <section class="tab" data-tab="sound" hidden>
       <div class="row lbl"><span>Volume</span><input id="vol" type="range" min="0" max="1" step="0.05" value="0.8"></div>
       <div class="row lbl"><span>Mute</span><input type="checkbox" id="muteChk"></div>
-      <h4>Narrator · Anlatıcı</h4>
+      <h4>Narrator</h4>
       <div class="row lbl"><span>Commentary</span><select id="narMode"><option value="off">Off</option><option value="text">Written</option><option value="voice">Written and spoken</option></select></div>
       <div class="row lbl"><span>How much</span><select id="narTalk"><option value="little">The important things</option><option value="some">As it goes</option><option value="much">Talkative</option></select></div>
-      <div class="row lbl"><span>Language</span><select id="narLang"><option value="en">English</option><option value="tr">Türkçe</option></select></div>
-      <div class="row lbl" id="narVoiceRow"><span>Voice</span><select id="narVoice"></select></div>
+      <div class="row lbl"><span>Language</span><select id="narLang" data-raw></select></div>
+      <div class="row lbl" id="narVoiceRow"><span>Voice</span><select id="narVoice" data-raw></select></div>
       <div id="narBar" hidden><i></i></div>
-      <p id="narState" class="muted small"></p>
+      <p id="narState" data-raw class="muted small"></p>
       <div class="row"><button id="narTest" class="ghost" hidden>Test</button><button id="narAgain" class="primary" hidden>Try again</button></div>
       <div class="row lbl"><span>The clock’s ticking</span><input type="checkbox" id="tickChk" checked></div>
     </section>
   </aside>
 
   <!-- something to decide about who plays (the host), or to ask for (someone watching) -->
-  <div id="seatAsk" hidden><span id="seatAskText"></span><button id="seatAskYes" class="primary small"></button><button id="seatAskNo" class="ghost small"></button></div>
+  <div id="seatAsk" hidden><span id="seatAskText" data-raw></span><button id="seatAskYes" data-raw class="primary small"></button><button id="seatAskNo" data-raw class="ghost small"></button></div>
 
   <!-- the public room list -->
   <div id="rooms" class="modal" hidden>
     <div class="card roomsCard">
-      <header class="roomsHead"><h3>Room list</h3><span id="roomsCount" class="muted small"></span>
+      <header class="roomsHead"><h3>Room list</h3><span id="roomsCount" data-raw class="muted small"></span>
         <button id="roomsClose" class="ghost icon" title="Close (Esc)" aria-label="Close the room list">✕</button></header>
-      <div id="roomsFull" class="warn small" hidden></div>
+      <div id="roomsFull" data-raw class="warn small" hidden></div>
       <div class="roomsBody">
         <div class="roomsTable">
           <table>
             <colgroup><col><col class="cg"><col class="cp"><col class="cl"><col class="cd"></colgroup>
-            <thead><tr><th>Name</th><th>Game</th><th>People</th><th>Pass</th><th>Distance</th></tr></thead>
-            <tbody id="roomsList"></tbody>
+            <thead><tr><th>Name</th><th>Game</th><th>People</th><th>Password</th><th>Distance</th></tr></thead>
+            <tbody id="roomsList" data-raw></tbody>
           </table>
-          <div id="roomsNote" class="muted small"></div>
+          <div id="roomsNote" data-raw class="muted small"></div>
         </div>
         <div class="roomsSide">
           <button id="roomsRefresh">Refresh</button>
@@ -265,7 +266,7 @@
         </div>
       </div>
       <div class="roomsPass" id="roomsPass" hidden>
-        <span id="roomsPassFor" class="small"></span>
+        <span id="roomsPassFor" data-raw class="small"></span>
         <input id="roomsPassIn" placeholder="Password" maxlength="20" autocomplete="off">
         <button id="roomsPassGo" class="primary">Join</button>
       </div>
@@ -279,7 +280,7 @@
 
   <!-- the host sending someone out (a person's ⋯ in the Room tab) -->
   <div id="kickMenu" hidden>
-    <div class="km-name"></div>
+    <div class="km-name" data-raw></div>
     <input id="kickReason" placeholder="Reason (optional)" maxlength="28" autocomplete="off">
     <div class="km-row"><button id="kickBtn" class="small">Kick</button><button id="banBtn" class="small danger">Ban</button></div>
     <div class="muted small">The computer takes their seat. Kicked: back in 2 min. Banned: not while the room is open – another browser gets round it.</div>
@@ -291,13 +292,13 @@
       <canvas id="edPreview" width="220" height="300"></canvas>
       <div class="edForm">
         <label>Name <input id="edName" maxlength="16"></label>
-        <div id="edNameWarn" class="warn small"></div>
+        <div id="edNameWarn" data-raw class="warn small"></div>
         <div class="seg" id="edSex"><button data-v="0">Man</button><button data-v="1">Woman</button></div>
         <label>Skin <span class="swatches" id="edSkin"></span></label>
-        <label>Hair <select id="edHair"></select> <input type="color" id="edHairCol"></label>
+        <label>Hair <select id="edHair" data-raw></select> <input type="color" id="edHairCol"></label>
         <label id="edBeardLbl">Facial hair <select id="edBeard"><option value="0">None</option><option value="1">Stubble</option><option value="2">Moustache</option><option value="3">Goatee</option><option value="4">Full beard</option></select></label>
-        <label>Height <b id="edHval"></b><input type="range" id="edH" min="160" max="200"></label>
-        <label>Build <b id="edBval"></b><input type="range" id="edB" min="0" max="100"></label>
+        <label>Height <b id="edHval" data-raw></b><input type="range" id="edH" min="160" max="200"></label>
+        <label>Build <b id="edBval" data-raw></b><input type="range" id="edB" min="0" max="100"></label>
         <label>Plays <select id="edHand"><option value="0">Right-handed</option><option value="1">Left-handed</option></select></label>
         <label>Shirt <input type="color" id="edShirt"> Jacket <input type="color" id="edVest"> Trousers <input type="color" id="edPants"></label>
         <div class="row end"><button id="edRandom" class="ghost">Random</button><button id="edCancel" class="ghost">Cancel</button><button id="edSave" class="primary">Save</button></div>
@@ -307,8 +308,8 @@
 
   <div id="over" class="modal" hidden>
     <div class="card center">
-      <h2 id="overTitle"></h2>
-      <p id="overText" class="muted"></p>
+      <h2 id="overTitle" data-raw></h2>
+      <p id="overText" data-raw class="muted"></p>
       <div class="row center"><button id="againBtn" class="primary">Play again</button><button id="overCopy" class="ghost">Copy the game</button><button id="overMenu" class="ghost">Menu</button></div>
     </div>
   </div>
@@ -317,8 +318,8 @@
   <div id="installBox" class="modal" hidden>
     <div class="card">
       <h3>Install Board games</h3>
-      <p id="installWhy" class="muted small"></p>
-      <ol id="installSteps"></ol>
+      <p id="installWhy" data-raw class="muted small"></p>
+      <ol id="installSteps" data-raw></ol>
       <div class="row end"><button id="installCopy" class="ghost">Copy link</button><button id="installClose" class="primary">OK</button></div>
     </div>
   </div>

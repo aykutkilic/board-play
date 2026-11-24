@@ -95,7 +95,7 @@ input[type=range] { accent-color: var(--accent); }
 .hbtns { display: flex; gap: 4px; }
 button.icon { padding: 4px 9px; }
 #tabs { display: flex; gap: 2px; padding: 0 8px; border-bottom: 1px solid var(--line); overflow-x: auto; }
-#tabs button { background: none; border: none; border-radius: 0; padding: 8px 9px; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
+#tabs button { background: none; border: none; border-radius: 0; padding: 8px 7px; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
 #tabs button.on { color: var(--text); border-bottom-color: var(--accent); }
 .tab { padding: 12px 14px; overflow-y: auto; flex: 1; touch-action: pan-y; }
 .tab h4 { margin: 14px 0 6px; font-size: 13px; }
@@ -301,3 +301,18 @@ body.asking #throw { bottom: calc(136px + var(--safe-b)); }
   #actions { bottom: calc(168px + var(--safe-b)); }
   #clockBtn { width: 96px; }
 }
+
+/* right to left (Arabic): moves and scores stay as they are written */
+[dir=rtl] .ln, [dir=rtl] .pscore, [dir=rtl] #sheet td, [dir=rtl] #onText { unicode-bidi: isolate; }
+[dir=rtl] .ln, [dir=rtl] #sheet td { direction: ltr; }
+[dir=rtl] .ll { border-left: 0; border-right: 2.5px solid transparent; padding: 2px 5px 2px 0; }
+[dir=rtl] #hud, [dir=rtl] #topRight, [dir=rtl] #throw, [dir=rtl] #bids .pad, [dir=rtl] #bids .auction { direction: ltr; }
+[dir=rtl] .pcard > div, [dir=rtl] .pname, [dir=rtl] .pinfo { direction: rtl; }
+[dir=rtl] .games button { text-align: right; }
+:lang(zh) .nname, :lang(ja) .nname, :lang(ko) .nname, :lang(ar) .nname { font-family: Georgia, "Hiragino Sans", "PingFang SC", "Apple SD Gothic Neo", "Geeza Pro", "Noto Sans CJK SC", "Noto Sans Arabic", sans-serif; }
+:lang(zh) #caption p, :lang(ja) #caption p, :lang(ko) #caption p, :lang(ar) #caption p { font-style: normal; font-family: "Hiragino Sans", "PingFang SC", "Apple SD Gothic Neo", "Geeza Pro", "Noto Sans CJK SC", "Noto Sans Arabic", sans-serif; }
+.hbtns select { max-width: 104px; }
+[dir=rtl] .nname, [dir=rtl] #logHead { unicode-bidi: plaintext; }
+#log, #sheet, .tab { scrollbar-color: rgba(160,160,160,.5) transparent; scrollbar-width: thin; }
+#tabs { scrollbar-width: none; } #tabs::-webkit-scrollbar { display: none; }
+:lang(ru) #tabs button { padding: 8px 4px; font-size: 13px; }
