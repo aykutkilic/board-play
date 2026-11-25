@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="Backgammon, chess, checkers, solitaire, FreeCell and bridge in 3D – played by hand in a grand Russian championship hall, against the computer or with friends online.">
+  <meta name="description" content="Backgammon, chess, checkers, go, okey, batak, king, mangala, bridge and more in 3D – played by hand in a grand Russian championship hall, against the computer or with friends online.">
   <title>Backgammon, Chess &amp; Checkers</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -62,6 +62,7 @@
   <div id="topBar">
   <div id="hud">
     <div class="pcard" id="p0"><i class="dot"></i><div><b class="pname" data-raw>Player 1</b><span class="pinfo" data-raw></span></div><span class="pscore" data-raw></span></div>
+    <div id="p4" data-raw></div>
     <div id="onText" data-raw></div>
     <div class="pcard right" id="p1"><span class="pscore" data-raw></span><div><b class="pname" data-raw>Player 2</b><span class="pinfo" data-raw></span></div><i class="dot"></i></div>
   </div>
@@ -113,7 +114,7 @@
 
     <section class="tab" data-tab="game" hidden>
       <div class="games" id="gameList" data-raw></div>
-      <div class="row lbl" data-for="chess checkers go backgammon bridge"><span>Play against</span>
+      <div class="row lbl" data-for="chess checkers go backgammon bridge batak king okey mangala morris reversi ludo fleet"><span>Play against</span>
         <select id="oppSel">
           <option value="ai:easy">Computer – Easy</option>
           <option value="ai:normal" selected>Computer – Normal</option>
@@ -124,7 +125,7 @@
       <div class="row lbl" data-for="checkers"><span>Rules</span><select id="variantSel" data-raw></select></div>
       <div class="row lbl" data-for="go"><span>Board</span><select id="sizeSel" data-raw><option value="9">9×9</option><option value="13">13×13</option><option value="19">19×19</option></select></div>
       <div class="row lbl" data-for="go"><span>Handicap</span><select id="handiSel" data-raw></select></div>
-      <div class="row lbl" data-for="chess checkers go"><span>You play</span><select id="colorSel"><option value="white">White / light</option><option value="black">Black / dark</option><option value="random">By lot</option><option value="swap" selected>In turn</option></select></div>
+      <div class="row lbl" data-for="chess checkers go morris reversi"><span>You play</span><select id="colorSel"><option value="white">White / light</option><option value="black">Black / dark</option><option value="random">By lot</option><option value="swap" selected>In turn</option></select></div>
       <div class="row lbl" data-for="chess checkers go"><span>Clock</span><select id="timeSel" data-raw></select></div>
       <div class="row lbl" data-for="chess"><span>Touch-move (FIDE 4.3)</span><input type="checkbox" id="touchChk"></div>
       <div class="row lbl" data-for="klondike"><span>Cards turned</span><select id="drawSel"><option value="1">One</option><option value="3">Three</option></select></div>
@@ -132,6 +133,13 @@
       <div class="row lbl" data-for="bridge"><span>Boards</span><select id="boardsSel"><option>1</option><option>2</option><option selected>4</option><option>8</option><option>16</option></select></div>
       <div class="row lbl" data-for="backgammon"><span>Match to</span><select id="lengthSel"><option>1</option><option selected>3</option><option>5</option><option>7</option><option>9</option><option>11</option></select></div>
       <div class="row lbl" data-for="backgammon"><span>Doubling cube</span><input type="checkbox" id="cubeChk" checked></div>
+      <div class="row lbl" data-for="batak"><span>Hands</span><select id="handsSel"><option>3</option><option selected>5</option><option>9</option><option>13</option></select></div>
+      <div class="row lbl" data-for="king"><span>Hands</span><select id="roundsSel"><option selected>20</option><option>12</option></select></div>
+      <div class="row lbl" data-for="okey"><span>Points</span><select id="pointsSel"><option selected>20</option><option>10</option><option>6</option></select></div>
+      <div class="row lbl" data-for="mangala"><span>Sets</span><select id="setsSel"><option selected>1</option><option>3</option></select></div>
+      <div class="row lbl" data-for="morris"><span>Three men fly</span><input type="checkbox" id="flyChk" checked></div>
+      <div class="row lbl" data-for="fleet"><span>A hit shoots again</span><input type="checkbox" id="againChk" checked></div>
+      <details id="howTo" class="small" hidden><summary>How it is played</summary><p id="howText" class="muted" data-raw></p></details>
       <div class="row"><button id="newGameBtn" class="primary wide">New game</button></div>
       <p id="hostOnly" class="muted small" hidden>Only the room's host can change the game.</p>
       <div id="seats" hidden>
