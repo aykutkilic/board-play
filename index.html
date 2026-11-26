@@ -30,7 +30,7 @@
     @keyframes loadBall { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-20px); } }
     @media (prefers-reduced-motion: reduce) { #loader .balls i { animation-name: loadDim; } @keyframes loadDim { 50% { opacity: .35; } } }
   </style>
-  <link rel="stylesheet" href="release-20030ef.20261126212849972/style.css">
+  <link rel="stylesheet" href="release-0a6a65b.20261126235514070/style.css">
 </head>
 <body>
   <div id="loader" role="status">
@@ -77,8 +77,8 @@
   <div id="topRight">
     <button id="camBtn" class="chip" title="Camera (F2 or C)"><span class="ico">🎥</span><b id="camName" data-raw>First person</b></button>
     <button id="flatBtn" class="chip icon" title="The pieces as 2D drawings – or hold Shift; tap Shift twice to keep them" aria-pressed="false" hidden><b class="letter" data-raw>2D</b></button>
-    <button id="undoBtn" class="chip icon" title="Take the move back (U)">↶</button>
-    <button id="fsChip" class="chip icon" title="Fullscreen" aria-label="Fullscreen" hidden>⛶</button>
+    <button id="undoBtn" class="chip icon" title="Take the move back (U)" aria-label="Take the move back (U)" disabled>↶</button>
+    <button id="fsChip" class="chip icon" title="Fullscreen" aria-label="Fullscreen">⛶</button>
     <button id="panelPill" class="chip pill" title="Room, game &amp; settings (Esc)"><i class="pillDot"></i><span id="pillName" data-raw>Menu</span> <b id="pillCode" data-raw></b><span id="pillOnline" data-raw></span> <span>▾</span></button>
   </div>
   </div>
@@ -393,6 +393,6 @@
   </div>
 
 
-  <script type="module" id="mainScript" src="release-20030ef.20261126212849972/main.js"></script>
+  <script type="module" id="mainScript" src="release-0a6a65b.20261126235514070/main.js"></script>
 </body>
 </html>
