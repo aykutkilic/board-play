@@ -363,3 +363,89 @@ a.lw { margin-inline-start: auto; padding-inline-start: 6px; text-decoration: no
 #handoff { text-align: center; color: var(--text); background: #211b19; border: 0; border-radius: 12px; padding: 24px; }
 #handoff::backdrop { background: #131110; }
 #view:focus-visible { outline: 2px solid #e8c26a; outline-offset: -3px; }
+
+#playDock, #notices, #tableArea { display: contents; }
+.compactOnly { display: none; }
+
+/* The room fills the window. Its playable area is the grid cell between controls. */
+body.compact {
+  display: grid; height: 100dvh; padding: var(--safe-t) var(--safe-r) var(--safe-b) var(--safe-l);
+  grid-template: "status" auto "board" minmax(0, 1fr) "notice" auto "drawer" auto "dock" auto / minmax(0, 1fr);
+  background: #131715;
+}
+.compact #tableArea { grid-area: board; display: block; position: relative; pointer-events: none; overflow: hidden; min-width: 0; min-height: 0; }
+.compact #topBar { position: static; grid-area: status; flex-flow: row nowrap; align-items: center; padding: 2px 6px; gap: 5px; min-width: 0; }
+.compact #hud { flex: 1; flex-wrap: nowrap; justify-content: start; gap: 4px; overflow: hidden; }
+.compact .pcard { min-width: 0; padding: 1px 6px; gap: 4px; border-radius: 7px; }
+.compact .pcard > div { min-width: 0; }
+.compact .pcard .pinfo, .compact #pillOnline, .compact .p4c span { display: none; }
+.compact .pscore { font-size: 15px; }
+.compact .dot { width: 7px; height: 7px; }
+.compact .pname { max-width: 23vw; font-size: 12px; }
+.compact #onText { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; padding: 2px 4px; }
+.compact #topRight { flex: none; }
+.compact #panelPill { min-height: 36px; max-width: 32vw; padding: 4px 8px; }
+.compact #pillName { overflow: hidden; text-overflow: ellipsis; }
+.compact #hud.four #p4 { gap: 2px; min-width: 0; }
+.compact .p4c { min-width: 0; padding: 2px 4px; gap: 3px; }
+.compact .p4c em { font-size: 13px; }
+.compact #compactTools { display: flex; align-items: center; gap: 4px; padding-inline: 8px; }
+.compact #compactTools .chip { min-height: 32px; }
+.compact #playDock { position: relative; grid-area: dock; display: flex; align-items: center; min-width: 0; gap: 4px; padding: 2px 5px; }
+.compact #playDock > button { flex: none; }
+.compact #actions { position: static; transform: none; flex: 1; min-width: 0; max-width: none; flex-wrap: nowrap; justify-content: start; align-items: center; gap: 4px; overflow-x: auto; touch-action: pan-x; pointer-events: auto; }
+.compact #actions > * { flex-shrink: 0; }
+.compact #actions button, .compact #actions select, .compact #bidToggle { min-height: 38px; padding: 4px 9px; touch-action: pan-x; }
+.compact #actions .what { padding: 4px; }
+.compact #clockBtn { position: static; width: auto; min-width: 48px; height: 38px; padding: 2px 8px; flex-direction: row; justify-content: center; box-shadow: none; border-radius: 9px; }
+.compact #clockBtn canvas { width: 23px; height: 23px; }
+.compact #promo { position: static; transform: none; gap: 2px; padding: 1px; }
+.compact #promo button { font-size: 23px; padding: 4px; }
+.compact #logToggle, .compact #narratorOrb { display: grid; place-items: center; width: 36px; min-height: 40px; border: 0; background: none; padding: 0; }
+.compact #logToggle::before { content: ''; width: 5px; height: 25px; border: 1px solid #b6ab89; border-radius: 4px; background: #8d866e; }
+.compact #logToggle[aria-expanded=true]::before { background: var(--accent); }
+.compact #narratorOrb i { width: 21px; height: 21px; border-radius: 50%; background: radial-gradient(at 34% 28%, #fff8d9, transparent 34%), radial-gradient(at 28% 66%, #56dbc0, transparent 53%), radial-gradient(at 75% 60%, #b48bff, transparent 65%), #4e8599; box-shadow: inset 0 0 0 1px #ffffff58; }
+.compact:has(#caption.show) #narratorOrb i { box-shadow: 0 0 8px #a2ded7a8; }
+.compact:has(#bids:not([hidden])) #bidToggle { display: block; color: var(--accent); }
+.compact #playDock [aria-expanded=true] { outline: 1px solid var(--accent); outline-offset: -2px; }
+.compact #logBox, .compact #caption, .compact #bids, .compact #panel, .compact #over {
+  grid-area: drawer; position: static; transform: none; width: 100%; max-width: none; min-width: 0;
+  min-height: 0; max-height: 38dvh; overflow: auto; touch-action: pan-y; border-radius: 0;
+  background: rgba(22, 27, 23, .84); box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+.compact #logBox:not([open]), .compact #logBox summary, .compact #news,
+.compact:not([data-drawer=bids]) #bids, .compact:not([data-drawer=caption]) #caption,
+.compact #caption:has(#captionText:empty) { display: none; }
+.compact #logBox[open] { display: flex; flex-direction: column; }
+.compact #logTabs { flex-wrap: wrap; }
+.compact #logScroll { min-height: 0; }
+.compact #hint { position: static; transform: none; white-space: normal; font-size: 11px; }
+.compact #caption { opacity: 1; pointer-events: auto; transition: none; padding: 8px 12px; }
+.compact #caption p { font-size: 14px; }
+.compact #bids .pad button, .compact #bids .calls button { min-height: 35px; }
+.compact #bids .auction { flex: none; max-height: min(76px, 16dvh); touch-action: pan-y; }
+.compact #panel { height: 38dvh; }
+.compact #panel header { padding: 4px 8px; align-items: center; }
+.compact #panel #roomStatus { display: none; }
+.compact #tabs, .compact #panel header, .compact #compactTools { flex: none; }
+.compact #panel .tab { min-height: 0; }
+.compact #over { padding: 4px; }
+.compact #over .row { flex-wrap: wrap; }
+.compact #notices { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; grid-area: notice; }
+.compact #toast, .compact #seatAsk, .compact #updateBtn { position: static; transform: none; max-width: 100%; padding: 3px 8px; animation: none; }
+.compact #throw { position: absolute; left: var(--dice-x, 50%); top: var(--dice-y, 50%); bottom: auto; transform: translate(-50%, -50%); gap: 2px; padding: 2px; border: 0; background: none; }
+.compact #throw .die { width: clamp(14px, 4.8vmin, 21px); height: auto; filter: drop-shadow(0 1px 2px #211b14); }
+.compact #throw:has(.die:nth-child(3)) .die { width: clamp(10px, 3.8vmin, 16px); }
+@media (orientation: landscape) {
+  body.compact { grid-template: "status status" auto "board drawer" minmax(0, 1fr) "notice notice" auto "dock dock" auto / minmax(0, 1fr) auto; }
+  .compact #logBox, .compact #caption, .compact #bids, .compact #panel, .compact #over { width: min(36vw, 340px); max-height: 100%; }
+  .compact #panel { height: 100%; }
+}
+.compact #panel .games { grid-template-columns: repeat(auto-fit, minmax(min(105px, 100%), 1fr)); }
+.compact #panel header { flex-wrap: wrap; gap: 2px; }
+.compact #playDock:has(#promo:not([hidden])) #actions { display: none; }
+.compact #logTabs button { min-height: 32px; }
+.compact:has(#news.show) #logToggle::before { background: var(--accent); }
+.compact[data-drawer=bids] #bids { display: flex; flex-direction: column; }
+.compact #bids .pad { min-height: 0; overflow-y: auto; touch-action: pan-y; }
+.compact #bids .calls { flex: none; }
