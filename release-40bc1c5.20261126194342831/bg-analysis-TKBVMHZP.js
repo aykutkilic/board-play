@@ -1,0 +1,1 @@
+import{a,b}from"./chunk-4S5KRS65.js";import"./chunk-SQKJID25.js";import"./chunk-LLB5QOXQ.js";import"./chunk-RYHJXNCG.js";import"./chunk-7XD42L45.js";import"./chunk-VA7ZNNGA.js";import"./chunk-3TXHFKDN.js";export{b as analyseBackgammon,a as bgFacts};

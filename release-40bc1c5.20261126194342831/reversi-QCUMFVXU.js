@@ -1,0 +1,1 @@
+import{a,b,c,d,e,f,g,h,i,j,k}from"./chunk-AZN7KKAB.js";import"./chunk-3TXHFKDN.js";export{a as cellName,h as count,f as discOfSeat,b as flips,d as newReversi,c as places,g as reversiActor,i as reversiApply,j as reversiScore,k as reversiSheet,e as seatOfDisc};
