@@ -30,7 +30,7 @@
     @keyframes loadBall { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-20px); } }
     @media (prefers-reduced-motion: reduce) { #loader .balls i { animation-name: loadDim; } @keyframes loadDim { 50% { opacity: .35; } } }
   </style>
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="release-95765a3.20261126160735920/style.css">
 </head>
 <body>
   <div id="loader" role="status">
@@ -56,7 +56,12 @@
       }, true);
     })();
   </script>
-  <canvas id="view"></canvas>
+  <canvas id="view" tabindex="0" aria-label="Game board"></canvas>
+  <dialog id="handoff" aria-labelledby="handoffName">
+    <p>Pass the device to</p>
+    <h2 id="handoffName" data-raw></h2>
+    <button id="revealHand" class="primary">Show my board</button>
+  </dialog>
 
   <!-- players and buttons -->
   <div id="topBar">
@@ -375,8 +380,8 @@
     </div>
   </div>
 
-  <div id="updateBtn" hidden>New version ready – tap to update</div>
+  <button type="button" id="updateBtn" hidden>New version ready – tap to update</button>
 
-  <script type="module" id="mainScript" src="src/main.js"></script>
+  <script type="module" id="mainScript" src="release-95765a3.20261126160735920/main.js"></script>
 </body>
 </html>

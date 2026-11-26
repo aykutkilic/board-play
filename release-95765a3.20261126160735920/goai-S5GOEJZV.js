@@ -1,0 +1,1 @@
+import{a as b,b as c,c as d,d as e,e as f,f as g}from"./chunk-DQHP5WQS.js";import{f as a}from"./chunk-SPXJAMXC.js";import"./chunk-VA7ZNNGA.js";import"./chunk-3TXHFKDN.js";export{c as Fast,f as goDead,g as goMove,e as ownership,d as search,b as seedGo,a as stars};

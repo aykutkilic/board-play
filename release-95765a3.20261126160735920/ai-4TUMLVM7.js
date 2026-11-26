@@ -1,0 +1,1 @@
+import{a,b,c,d,e,f,g,h,i,j,k}from"./chunk-SQKJID25.js";import"./chunk-LLB5QOXQ.js";import"./chunk-RYHJXNCG.js";import"./chunk-7XD42L45.js";import"./chunk-VA7ZNNGA.js";import"./chunk-3TXHFKDN.js";export{b as ChessBrain,f as bgAfter,g as bgBest,j as bgDouble,i as bgEquity,h as bgPlay,k as bgTake,e as checkersMove,d as chessAnswer,c as chessMove,a as evaluate};
