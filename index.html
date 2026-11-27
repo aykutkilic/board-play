@@ -30,7 +30,7 @@
     @keyframes loadBall { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-20px); } }
     @media (prefers-reduced-motion: reduce) { #loader .balls i { animation-name: loadDim; } @keyframes loadDim { 50% { opacity: .35; } } }
   </style>
-  <link rel="stylesheet" href="release-0a6a65b.20261126235514070/style.css">
+  <link rel="stylesheet" href="release-d164799.20261127010715500/style.css">
 </head>
 <body>
   <div id="loader" role="status">
@@ -133,7 +133,7 @@
 
     <section class="tab" data-tab="game" hidden>
       <div class="games" id="gameList" data-raw></div>
-      <div class="row lbl" data-for="chess checkers go backgammon bridge batak king okey mangala morris reversi ludo fleet hex halma dots xiangqi shogi domino"><span>Play against</span>
+      <div class="row lbl" data-for="chess checkers go backgammon bridge batak king okey mangala morris reversi ludo fleet hex halma dots xiangqi shogi domino pisti riichi carrom"><span>Play against</span>
         <select id="oppSel">
           <option value="ai:easy">Computer – Easy</option>
           <option value="ai:normal" selected>Computer – Normal</option>
@@ -150,7 +150,7 @@
       <div class="row lbl" data-for="klondike"><span>Cards turned</span><select id="drawSel"><option value="1">One</option><option value="3">Three</option></select></div>
       <div class="row lbl" data-for="freecell"><span>Deal number</span><input id="dealIn" type="number" min="1" max="1000000" placeholder="any"></div>
       <div class="row lbl" data-for="bridge"><span>Boards</span><select id="boardsSel"><option>1</option><option>2</option><option selected>4</option><option>8</option><option>16</option></select></div>
-      <div class="row lbl" data-for="backgammon"><span>Rules</span><select id="bgVarSel"><option value="standard" selected>Backgammon</option><option value="nardy">Long nardy (no hitting)</option></select></div>
+      <div class="row lbl" data-for="backgammon"><span>Rules</span><select id="bgVarSel"><option value="standard" selected>Backgammon</option><option value="nardy">Long nardy (no hitting)</option><option value="plakoto">Plakoto (pinning)</option></select></div>
       <div class="row lbl" data-for="backgammon"><span>Match to</span><select id="lengthSel"><option>1</option><option selected>3</option><option>5</option><option>7</option><option>9</option><option>11</option></select></div>
       <div class="row lbl" data-for="backgammon"><span>Doubling cube</span><input type="checkbox" id="cubeChk" checked></div>
       <div class="row lbl" data-for="batak"><span>Hands</span><select id="handsSel"><option>3</option><option selected>5</option><option>9</option><option>13</option></select></div>
@@ -163,6 +163,7 @@
       <div class="row lbl" data-for="fleet"><span>A hit shoots again</span><input type="checkbox" id="againChk" checked></div>
       <div class="row lbl" data-for="hex"><span>Board</span><select id="hexSizeSel" data-raw><option value="9">9×9</option><option value="11" selected>11×11</option><option value="13">13×13</option></select></div>
       <div class="row lbl" data-for="dots"><span>Boxes</span><select id="dotSizeSel" data-raw><option value="3">3×3</option><option value="4">4×4</option><option value="5" selected>5×5</option><option value="6">6×6</option></select></div>
+      <div class="row lbl" data-for="pisti"><span>Players</span><select id="pistiPlayers"><option value="2">Two players</option><option value="4">Four · opposite partners</option></select></div>
       <div class="row lbl" data-for="domino"><span>Points</span><select id="domPointsSel"><option>50</option><option selected>100</option><option>150</option></select></div>
       <div class="row lbl" data-for="hex"><span>Swap rule</span><input type="checkbox" id="swapChk" checked></div>
       <details id="howTo" class="small" hidden><summary>How it is played</summary><p id="howText" class="muted" data-raw></p></details>
@@ -393,6 +394,6 @@
   </div>
 
 
-  <script type="module" id="mainScript" src="release-0a6a65b.20261126235514070/main.js"></script>
+  <script type="module" id="mainScript" src="release-d164799.20261127010715500/main.js"></script>
 </body>
 </html>
