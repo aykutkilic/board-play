@@ -1,0 +1,1 @@
+import{a,b,c,d,e,f,g,h,i,j,k,l,m}from"./chunk-E4Z6FVZH.js";import"./chunk-3TXHFKDN.js";export{c as BASELINE,a as RADIUS,b as STRIKER,m as adapter,g as canPlace,k as carromApply,l as carromMove,h as defaultPlacement,d as holes,i as newCarrom,j as simulate,e as startX,f as startY};
