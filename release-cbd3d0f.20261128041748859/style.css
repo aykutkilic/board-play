@@ -451,3 +451,6 @@ body.compact {
 .compact[data-drawer=bids] #bids { display: flex; flex-direction: column; }
 .compact #bids .pad { min-height: 0; overflow-y: auto; touch-action: pan-y; }
 .compact #bids .calls { flex: none; }
+
+/* one's own man carried over the board: what lies over it, nearly out of the way */
+.veiled { opacity: .12 !important; pointer-events: none !important; transition: opacity .18s ease-out !important; }
