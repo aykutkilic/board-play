@@ -49,11 +49,12 @@ async function fetchCached(path, onBytes) {
     n += value.byteLength;
     onBytes(value.byteLength);
   }
-  const buf = new Uint8Array(n);
-  let o = 0;
-  for (const p of parts) { buf.set(p, o); o += p.byteLength; }
-  if (cache) { try { await cache.put(url, new Response(buf.slice().buffer)); } catch { /* quota: fine, just not kept */ } }
-  return buf.buffer;
+  // (one copy at a time: the pieces into a blob, which the cache stores and
+  // the browser may keep on disk, then the bytes read back once)
+  const blob = new Blob(parts);
+  parts.length = 0;
+  if (cache) { try { await cache.put(url, new Response(blob)); } catch { /* quota: fine, just not kept */ } }
+  return blob.arrayBuffer();
 }
 
 async function session(buf) {
